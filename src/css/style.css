@@ -31,4 +31,8 @@ button {
   border: none;
 }
 
-
+#infoPokemons li{
+  border: 1px solid #898989;
+  padding: 8px;
+  text-align: left;
+}

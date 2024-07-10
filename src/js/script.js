@@ -51,18 +51,36 @@ const showPokemons = async(type) => {
 const showInfoPokemons = async(pokemon) => {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
     const json = await response.json()
-    console.log(json)
 
     const srcImg = json["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_default"]
-
-    let html = `<img src="${srcImg}" alt="pokemon">`
+    
+    let html = `
+    <h1>${json.name}</h1>   
+    <img src="${srcImg}" alt="pokemon">
+    <h3>Located at:</h3>
+    `
 
     sectionPokemons.innerHTML =""
     sectionButtons.innerHTML = ""
     sectionInfoPokemons.innerHTML = html
 
-    
+    showLocalization(pokemon)
 }
+const showLocalization = async(pokemon) => {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}/encounters`)
+    const json = await response.json()
+
+    console.log(json)
+
+    json.forEach(local => {
+        let localization = `
+        <li>${local.location_area.name}</li>   
+        `
+        sectionInfoPokemons.innerHTML += localization
+    });
+
+}
+
 // buttonTeste.addEventListener("click", (e) => {
 //     clicked()
 // })
