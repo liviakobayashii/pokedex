@@ -30,9 +30,20 @@ button {
   border-radius: 5px;
   border: none;
 }
+button:hover{
+  cursor: pointer;
+  filter:brightness(0.8);
+  transition: 0.2s;
+  
+}
 
 #infoPokemons li{
   border: 1px solid #898989;
   padding: 8px;
   text-align: left;
+}
+.toBack{
+  width: 50px;
+  margin-right: 900px;
+  text-align: center;
 }
