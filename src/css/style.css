@@ -47,3 +47,8 @@ button:hover{
   margin-right: 900px;
   text-align: center;
 }
+
+div#localizations {
+  height: 500px;
+  overflow: scroll;
+}
