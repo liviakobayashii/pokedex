@@ -9,16 +9,14 @@ const init = async() => {
     
     const types = json.results
     
-    let html = ""
+    let pokemonTypes = ""
     types.forEach(type => {
-        html += `
+        pokemonTypes += `
         <button onclick="showPokemons('${type.name}')">${type.name}</button>
         `       
     }); 
 
-    sectionButtons.innerHTML = html
-    sectionPokemons.innerHTML =""
-    sectionInfoPokemons.innerHTML = ""
+    sectionPokemons.innerHTML = pokemonTypes
 
 }
 init()
@@ -34,9 +32,7 @@ const showPokemons = async(type) => {
     pokemons.forEach(pokemon => {
         html += `<button onclick="showInfoPokemons('${pokemon.pokemon.name}')">${pokemon.pokemon.name}</button>`
         
-        sectionButtons.innerHTML = ""
         sectionPokemons.innerHTML = html
-        sectionInfoPokemons.innerHTML = ""
 
     });
     
@@ -46,37 +42,57 @@ const showInfoPokemons = async(pokemon) => {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
     const json = await response.json()
 
+    console.log(json)
+
     const srcImg = json["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_default"]
     
     let button = ` <button onclick="toBack()" class="toBack"><-</button>`
 
-    let html = `
+    let imgPokemons = `
     <h1>${json.name}</h1>   
     <img src="${srcImg}" alt="pokemon">
-    <h3>Located at:</h3> <br>
+    `
+    
+    let infoPokemons =`
+    <p>Type</p>
+    <h3>About</h3>
+    <section id="about">
+        <div>
+            <div>${parseFloat(json.weight).toFixed(2)}</div>
+            <p>weight</p>
+        </div>
+        <div>
+            <div>${parseFloat(json.height).toFixed(2)}</div>
+            <p>height</p>
+        </div>
+    </section>
+    
     `
 
-    sectionPokemons.innerHTML =""
-    sectionButtons.innerHTML = ""
-    sectionInfoPokemons.innerHTML += button
-    sectionInfoPokemons.innerHTML += html
+    sectionPokemons.innerHTML = imgPokemons
+    sectionPokemons.innerHTML += infoPokemons
 
-    showLocalization(pokemon)
+    // showLocalization(pokemon)
 }
-const showLocalization = async(pokemon) => {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}/encounters`)
-    const json = await response.json()
+// const showLocalization = async(pokemon) => {
+//     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}/encounters`)
+//     const json = await response.json()
 
-    json.forEach(local => {
-        let localization = `
-        <li>${local.location_area.name}</li>   
-        `
-        sectionInfoPokemons.innerHTML += localization
-    });
+//     let localizations = ''
 
-}
+//     json.forEach(local => {
+//         localizations += `
+//         <li>${local.location_area.name}</li>   
+//         `
+//     });
 
-const toBack = () => { 
-    window.location.reload() 
-}
+//     const div = `
+//     <div id="localizations">${localizations}</div>
+//     `
+//     sectionPokemons.innerHTML += div
+// }
+
+// const toBack = () => { 
+//     window.location.reload() 
+// }
 
