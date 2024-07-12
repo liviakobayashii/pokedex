@@ -17,6 +17,7 @@ const init = async() => {
     }); 
 
     sectionPokemons.innerHTML = pokemonTypes
+    sectionInfoPokemons.innerHTML = ""
 
 }
 init()
@@ -33,6 +34,7 @@ const showPokemons = async(type) => {
         html += `<button onclick="showInfoPokemons('${pokemon.pokemon.name}')">${pokemon.pokemon.name}</button>`
         
         sectionPokemons.innerHTML = html
+        sectionInfoPokemons.innerHTML = ""
 
     });
     
@@ -41,12 +43,27 @@ const showPokemons = async(type) => {
 const showInfoPokemons = async(pokemon) => {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
     const json = await response.json()
-
+    
     console.log(json)
-
+    
     const srcImg = json["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_default"]
     
     let button = ` <button onclick="toBack()" class="toBack"><-</button>`
+    
+    let divStats = ""
+    const stats = json.stats
+    stats.forEach(item => {
+        divStats += `<p>${item.base_stat}</p>`
+    });
+
+    let lineBar = "";
+    stats.forEach(item => {
+        lineBar += `
+        <div class="line-bar">
+            <div class="bar" style="width: ${item.base_stat}%"></div>
+        </div>
+        `;
+    });    
 
     let imgPokemons = `
     <h1>${json.name}</h1>   
@@ -56,21 +73,41 @@ const showInfoPokemons = async(pokemon) => {
     let infoPokemons =`
     <p>Type</p>
     <h3>About</h3>
-    <section id="about">
-        <div>
-            <div>${parseFloat(json.weight).toFixed(2)}</div>
-            <p>weight</p>
-        </div>
-        <div>
-            <div>${parseFloat(json.height).toFixed(2)}</div>
-            <p>height</p>
-        </div>
+    <section id="info">
+        <section id="about">
+            <div>
+                <div>${parseFloat(json.weight).toFixed(2).replace(".",",")} kg</div>
+                <p>weight</p>
+            </div>
+            <div>
+                <div>${parseFloat(json.height).toFixed(2).replace(".",",")} cm</div>
+                <p>height</p>
+            </div>
+        </section>
+        <section id="stats">
+            <div id="title">
+                <p>HP</p>
+                <p>ATK</p>
+                <p>DEF</p>
+                <p>SATK</p>
+                <p>SDEF</p>
+                <p>SPD</p>
+            </div>
+            <div id="data">
+                ${divStats}
+            </div>
+            <div id="bars">
+                ${lineBar}
+            </div>
+
+        </section>
     </section>
     
     `
 
-    sectionPokemons.innerHTML = imgPokemons
-    sectionPokemons.innerHTML += infoPokemons
+    sectionPokemons.innerHTML = ""
+    sectionInfoPokemons.innerHTML = imgPokemons
+    sectionInfoPokemons.innerHTML += infoPokemons
 
     // showLocalization(pokemon)
 }

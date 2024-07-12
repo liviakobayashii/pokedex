@@ -13,7 +13,7 @@ body {
   min-height: 100vh;
 }
 
-main {
+section#pokemon {
   display: inline-block;
   margin-top: 2%;
   padding: 15px;
@@ -37,18 +37,57 @@ button:hover{
   
 }
 
-#infoPokemons li{
-  border: 1px solid #898989;
-  padding: 8px;
-  text-align: left;
-}
 .toBack{
   width: 50px;
   margin-right: 900px;
   text-align: center;
 }
 
-div#localizations {
+/* div#localizations {
   height: 500px;
   overflow: scroll;
+} */
+
+#info {
+  border: 1px solid green;
+}
+
+
+section#infoPokemons {
+  width: 500px;
+  display: inline-block;
+  margin-top: 2%;
+  padding: 15px;
+  position: relative;
+  
+}
+section#infoPokemons p {
+  color: #4a4a4a;
+  font-size: 0.8em;
+}
+#about {
+  display: flex;
+  justify-content: space-between;
+}
+#stats {
+  display: flex;
+  border: 1px solid red;
+
+}
+#title, #data {
+  width: 10%;
+  padding: 8px;
+  text-align: left;
+}
+#stats p {
+  margin: 16px 0px;
+}
+#stats .line_bar {
+  width: 100%;
+  border: 1px solid blue;
+  height: 16px;
+  display: block;
+}
+#stats .bar {
+  background-color: red;
 }
