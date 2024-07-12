@@ -12,6 +12,14 @@ body {
   background: linear-gradient(to bottom, #6ab7f5, #fff);
   min-height: 100vh;
 }
+header {
+  background-color: #383838;
+  margin-bottom: 32px;
+}
+
+header img {
+  width: 300px;
+}
 
 section#pokemon {
   display: inline-block;
@@ -19,6 +27,7 @@ section#pokemon {
   padding: 15px;
   position: relative;
 }
+
 #buttons {
   gap: 16px;
 }
@@ -30,6 +39,7 @@ button {
   border-radius: 5px;
   border: none;
 }
+
 button:hover{
   cursor: pointer;
   filter:brightness(0.8);
@@ -43,15 +53,26 @@ button:hover{
   text-align: center;
 }
 
-/* div#localizations {
-  height: 500px;
-  overflow: scroll;
-} */
-
-#info {
-  border: 1px solid green;
+#divType {
+  color: #141414;
+  margin: 16px 0px;
+  display: flex;
+  justify-content: space-around;
 }
 
+#divType p {
+  background-color: #ff8e8e;
+  border: 1px solid #ff0000;
+  width: 105px;
+  padding: 8px;
+  border-radius: 16px;
+  font-size: 0.8em;
+}
+
+#info {
+  background-color: #f7f7f7;
+  border-radius: 5px;
+}
 
 section#infoPokemons {
   width: 500px;
@@ -61,33 +82,61 @@ section#infoPokemons {
   position: relative;
   
 }
-section#infoPokemons p {
-  color: #4a4a4a;
-  font-size: 0.8em;
-}
+
 #about {
+  padding: 15px;
   display: flex;
   justify-content: space-between;
 }
+
+#about p {
+  color: #4a4a4a;
+  font-size: 0.8em;
+}
+
 #stats {
   display: flex;
-  border: 1px solid red;
-
+  padding: 15px;
 }
-#title, #data {
-  width: 10%;
+#h3Stats {
   padding: 8px;
-  text-align: left;
 }
-#stats p {
-  margin: 16px 0px;
-}
-#stats .line_bar {
+#stats .line-bar {
   width: 100%;
-  border: 1px solid blue;
   height: 16px;
   display: block;
 }
+
 #stats .bar {
-  background-color: red;
+  height: 16px;
+  background-color: rgb(255, 221, 0);
+}
+
+.characteristics {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  padding: 5px 0;
+}
+
+#data {
+  width: 100%;
+}
+
+.statsName {
+  width: 50px;
+  text-align: left;
+}
+
+.statsValue {
+  width: 40px;
+  text-align: left;
+}
+
+footer {
+  color: #4a4a4a;
+  padding: 64px;
+  font-size: 0.8em;
 }

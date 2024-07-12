@@ -43,37 +43,58 @@ const showPokemons = async(type) => {
 const showInfoPokemons = async(pokemon) => {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
     const json = await response.json()
-    
-    console.log(json)
-    
+        
     const srcImg = json["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_default"]
     
     let button = ` <button onclick="toBack()" class="toBack"><-</button>`
-    
-    let divStats = ""
-    const stats = json.stats
-    stats.forEach(item => {
-        divStats += `<p>${item.base_stat}</p>`
-    });
 
-    let lineBar = "";
+    let divStats = `<hr><h3 id="h3Stats">Stats</h3>`
+    const stats = json.stats
+
+    const statsNames = {
+        hp: 'HP',
+        attack: 'ATK',
+        defense: 'DEF',
+        'special-attack': 'SATK',
+        'special-defense': 'SDEF',
+        speed: 'SPD',
+    }
+
+
     stats.forEach(item => {
-        lineBar += `
-        <div class="line-bar">
-            <div class="bar" style="width: ${item.base_stat}%"></div>
+        divStats += `
+        <div class="characteristics">
+            <p class="statsName">${statsNames[item.stat.name]}</p>
+
+            <p class="statsValue">${item.base_stat}</p>
+
+            <div class="line-bar">
+                <div class="bar" style="width: ${item.base_stat}px"></div>
+            </div>
         </div>
-        `;
-    });    
+        `
+    });
+    
+    const type = json.types
+    
+    let divType = ""
+
+    type.forEach(item => {
+        divType += `<p>${item.type.name}</p>`
+    });
 
     let imgPokemons = `
     <h1>${json.name}</h1>   
     <img src="${srcImg}" alt="pokemon">
+    <div id="divType">${divType}</div>
     `
     
     let infoPokemons =`
-    <p>Type</p>
+
     <h3>About</h3>
+
     <section id="info">
+
         <section id="about">
             <div>
                 <div>${parseFloat(json.weight).toFixed(2).replace(".",",")} kg</div>
@@ -84,22 +105,11 @@ const showInfoPokemons = async(pokemon) => {
                 <p>height</p>
             </div>
         </section>
+
         <section id="stats">
-            <div id="title">
-                <p>HP</p>
-                <p>ATK</p>
-                <p>DEF</p>
-                <p>SATK</p>
-                <p>SDEF</p>
-                <p>SPD</p>
-            </div>
             <div id="data">
                 ${divStats}
             </div>
-            <div id="bars">
-                ${lineBar}
-            </div>
-
         </section>
     </section>
     
