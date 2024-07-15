@@ -17,15 +17,17 @@ header {
   margin-bottom: 32px;
 }
 
-header img {
+img {
   width: 300px;
 }
-
 section#pokemon {
   display: inline-block;
   margin-top: 2%;
   padding: 15px;
   position: relative;
+}
+#pokemonPerfil {
+  padding-right: 16px;
 }
 
 #buttons {
@@ -69,19 +71,20 @@ button:hover{
   font-size: 0.8em;
 }
 
+section#infoPokemons {
+  width: 500px;
+  margin: auto;
+  display: flex;
+  padding: 15px;
+  
+}
+
 #info {
   background-color: #f7f7f7;
+  padding: 32px;
   border-radius: 5px;
 }
 
-section#infoPokemons {
-  width: 500px;
-  display: inline-block;
-  margin-top: 2%;
-  padding: 15px;
-  position: relative;
-  
-}
 
 #about {
   padding: 15px;

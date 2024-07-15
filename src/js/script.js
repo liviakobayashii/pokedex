@@ -2,6 +2,8 @@ let sectionButtons = document.querySelector("#buttons")
 let sectionPokemons = document.querySelector("#pokemons")
 let sectionInfoPokemons= document.querySelector("#infoPokemons")
 
+var pokemonType = ""
+
 const init = async() => {
 
     const response = await fetch("https://pokeapi.co/api/v2/type")
@@ -26,6 +28,8 @@ const showPokemons = async(type) => {
     
     const response = await fetch(`https://pokeapi.co/api/v2/type/${type}`)
     const json = await response.json()
+
+    pokemonType = type
     
     const pokemons = json.pokemon
     
@@ -43,8 +47,12 @@ const showPokemons = async(type) => {
 const showInfoPokemons = async(pokemon) => {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
     const json = await response.json()
+
+    let html =""
+    html += `<button onclick="showInfoPokemons('')"><-</button>`
         
-    const srcImg = json["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_default"]
+        
+    const srcImg = json["sprites"]["front_default"]
     
     let button = ` <button onclick="toBack()" class="toBack"><-</button>`
 
@@ -63,6 +71,7 @@ const showInfoPokemons = async(pokemon) => {
 
     stats.forEach(item => {
         divStats += `
+        
         <div class="characteristics">
             <p class="statsName">${statsNames[item.stat.name]}</p>
 
@@ -83,18 +92,20 @@ const showInfoPokemons = async(pokemon) => {
         divType += `<p>${item.type.name}</p>`
     });
 
-    let imgPokemons = `
-    <h1>${json.name}</h1>   
-    <img src="${srcImg}" alt="pokemon">
-    <div id="divType">${divType}</div>
+    let pokemonPerfil = `
+    <section id="pokemonPerfil">
+        <h1>${json.name}</h1>   
+        <img src="${srcImg}" alt="pokemon">
+        <div id="divType">${divType}</div>
+    </section>
     `
     
     let infoPokemons =`
 
-    <h3>About</h3>
-
+    
     <section id="info">
-
+    
+    <h3>About</h3>
         <section id="about">
             <div>
                 <div>${parseFloat(json.weight).toFixed(2).replace(".",",")} kg</div>
@@ -116,30 +127,7 @@ const showInfoPokemons = async(pokemon) => {
     `
 
     sectionPokemons.innerHTML = ""
-    sectionInfoPokemons.innerHTML = imgPokemons
+    sectionInfoPokemons.innerHTML = pokemonPerfil
     sectionInfoPokemons.innerHTML += infoPokemons
 
-    // showLocalization(pokemon)
 }
-// const showLocalization = async(pokemon) => {
-//     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}/encounters`)
-//     const json = await response.json()
-
-//     let localizations = ''
-
-//     json.forEach(local => {
-//         localizations += `
-//         <li>${local.location_area.name}</li>   
-//         `
-//     });
-
-//     const div = `
-//     <div id="localizations">${localizations}</div>
-//     `
-//     sectionPokemons.innerHTML += div
-// }
-
-// const toBack = () => { 
-//     window.location.reload() 
-// }
-
