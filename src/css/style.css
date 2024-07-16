@@ -33,10 +33,11 @@ section#pokemon {
 }
 
 .divPokemons {
-  background-color: red;
+  background-color: #f7f7f7;
   margin: 80px;
   padding: 32px;
   border-radius: 5px;
+  box-shadow: 1px 3px 4px rgba(210, 210, 210, 0.599);
 }
 
 #buttons {
@@ -44,7 +45,7 @@ section#pokemon {
 }
 button {
   background-color: #606060;
-  color: #f0ffff;
+  color: #f7f7f7;
   width: 300px;
   margin: 8px;
   padding: 16px;
@@ -70,8 +71,13 @@ button:hover{
   margin-right: 900px;
   text-align: center;
 }
+
 #backToHome {
   margin: 32px 0px;
+}
+
+#imgPerfilPokemon {
+  filter:drop-shadow(10px 0 30px #6ab7f5)
 }
 
 #divType {

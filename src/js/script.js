@@ -103,7 +103,7 @@ const showInfoPokemons = async (pokemon) => {
     let pokemonPerfil = `
     <section id="pokemonPerfil">
         <h1>${json.name}</h1>   
-        <img src="${srcImg}" alt="pokemon">
+        <img src="${srcImg}" alt="pokemon" id="imgPerfilPokemon">
         <div id="divType">${divType}</div>
     </section>
         `
