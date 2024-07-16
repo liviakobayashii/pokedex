@@ -18,7 +18,7 @@ header {
 }
 
 img {
-  width: 300px;
+  width: 200px;
 }
 section#pokemon {
   display: inline-block;
@@ -49,10 +49,13 @@ button:hover{
   
 }
 
-.toBack{
+.toBack {
   width: 50px;
   margin-right: 900px;
   text-align: center;
+}
+#backToHome {
+  margin: 32px 0px;
 }
 
 #divType {
@@ -67,11 +70,12 @@ button:hover{
   border: 1px solid #ff0000;
   width: 105px;
   padding: 8px;
+  margin: 8px;
   border-radius: 16px;
   font-size: 0.8em;
 }
 
-section#infoPokemons {
+section#infoPokemons > div#pokemonData {
   width: 500px;
   margin: auto;
   display: flex;
