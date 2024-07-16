@@ -13,33 +13,49 @@ body {
   min-height: 100vh;
 }
 header {
-  background-color: #383838;
+  background-color: #ffdd00;
   margin-bottom: 32px;
 }
 
 img {
   width: 200px;
 }
+
+h1:first-child {
+  margin-top: 64px;
+}
+
 section#pokemon {
   display: inline-block;
   margin-top: 2%;
   padding: 15px;
   position: relative;
 }
-#pokemonPerfil {
-  padding-right: 16px;
+
+.divPokemons {
+  background-color: red;
+  margin: 80px;
+  padding: 32px;
+  border-radius: 5px;
 }
 
 #buttons {
   gap: 16px;
 }
-
 button {
+  background-color: #606060;
+  color: #f0ffff;
   width: 300px;
   margin: 8px;
   padding: 16px;
   border-radius: 5px;
   border: none;
+  box-shadow:0px 8px #383838;
+}
+
+button:active {
+  transform: translatey(5px);
+  box-shadow: none;
 }
 
 button:hover{
@@ -50,7 +66,7 @@ button:hover{
 }
 
 .toBack {
-  width: 50px;
+  width: 100px;
   margin-right: 900px;
   text-align: center;
 }
@@ -66,27 +82,28 @@ button:hover{
 }
 
 #divType p {
-  background-color: #ff8e8e;
-  border: 1px solid #ff0000;
+  background-color: red;
   width: 105px;
+  font-weight: bold;
   padding: 8px;
   margin: 8px;
   border-radius: 16px;
   font-size: 0.8em;
 }
 
-section#infoPokemons > div#pokemonData {
-  width: 500px;
-  margin: auto;
+div#pokemonData {
+  background-color: #f7f7f7;
+  margin: 64px;
+  padding: 64px;
   display: flex;
-  padding: 15px;
-  
+  justify-content: space-around;
+  border-radius: 5px;
+  box-shadow: 3px 2px 10px #6ab7f5;
 }
 
 #info {
   background-color: #f7f7f7;
   padding: 32px;
-  border-radius: 5px;
 }
 
 
@@ -116,7 +133,7 @@ section#infoPokemons > div#pokemonData {
 
 #stats .bar {
   height: 16px;
-  background-color: rgb(255, 221, 0);
+  background-color: #ffdd00;
 }
 
 .characteristics {

@@ -1,5 +1,4 @@
 let sectionPokemons = document.querySelector("#pokemons")
-let sectionInfoPokemons = document.querySelector("#infoPokemons")
 
 var lastPokemonTypePicked = null
 
@@ -18,9 +17,12 @@ const init = async () => {
         `
     });
 
-    sectionPokemons.innerHTML = pokemonTypes
-    sectionInfoPokemons.innerHTML = ""
+    const render = `
+    <h1>Pokémon Types</h1>
+    <div class="divPokemons">${pokemonTypes}</div>
+    `
 
+    sectionPokemons.innerHTML = render
 }
 
 const showPokemons = async (type) => {
@@ -42,10 +44,13 @@ const showPokemons = async (type) => {
     pokemons.forEach(pokemon => {
         html += `<button onclick="showInfoPokemons('${pokemon.pokemon.name}')">${pokemon.pokemon.name}</button>`
 
-        sectionPokemons.innerHTML = buttonToBack
-        sectionPokemons.innerHTML += html
-        sectionInfoPokemons.innerHTML = ""
+        const render = `
+        <h1>Pókemons of ${lastPokemonTypePicked}<h1>
+        <div class="divPokemons">${html}</div>
+        `
 
+        sectionPokemons.innerHTML = buttonToBack
+        sectionPokemons.innerHTML += render
     });
 
 }
@@ -100,7 +105,7 @@ const showInfoPokemons = async (pokemon) => {
         <h1>${json.name}</h1>   
         <img src="${srcImg}" alt="pokemon">
         <div id="divType">${divType}</div>
-        </section>
+    </section>
         `
 
     let infoPokemons = `
@@ -108,23 +113,23 @@ const showInfoPokemons = async (pokemon) => {
         
         <section id="info">
         
-        <h3>About</h3>
-        <section id="about">
-        <div>
-        <div>${transformMeasures(json.weight)} kg</div>
-        <p>weight</p>
-        </div>
-        <div>
-        <div>${transformMeasures(json.height)} cm</div>
-        <p>height</p>
-        </div>
-        </section>
-        
-        <section id="stats">
-        <div id="data">
-        ${divStats}
-        </div>
-        </section>
+            <h3>About</h3>
+            <section id="about">
+                <div>
+                    <div>${transformMeasures(json.weight)} kg</div>
+                    <p>weight</p>
+                </div>
+                <div>
+                    <div>${transformMeasures(json.height)} cm</div>
+                    <p>height</p>
+                </div>
+            </section>
+            
+            <section id="stats">
+                <div id="data">
+                ${divStats}
+                </div>
+            </section>
         </section>
         `
 
@@ -134,8 +139,7 @@ const showInfoPokemons = async (pokemon) => {
         ${infoPokemons}
         </div>`
 
-    sectionPokemons.innerHTML = ""
-    sectionInfoPokemons.innerHTML = render
+    sectionPokemons.innerHTML = render
 
 }
 
