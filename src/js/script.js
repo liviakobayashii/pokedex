@@ -33,7 +33,7 @@ const showPokemons = async (type) => {
 
     const buttonToBack = `
     <div id="backToHome">
-        <button onclick="init()" class="toBack"><-</button>
+        <button onclick="init()" class="toBack"> <span class="ep--back"></span> </button>
     </div>
     `
 
@@ -48,13 +48,12 @@ const showPokemons = async (type) => {
 
         const render = `
         <div class="divPokemons">
+            ${buttonToBack}
             <h1>Pókemons of ${lastPokemonTypePicked}</h1>
             ${html}
         </div>
         `
-
-        sectionPokemons.innerHTML = buttonToBack
-        sectionPokemons.innerHTML += render
+        sectionPokemons.innerHTML = render
     });
 
 }
@@ -63,7 +62,7 @@ const showInfoPokemons = async (pokemon) => {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
     const json = await response.json()
 
-    const buttonToBack = `<button onclick="toBack()" class="toBack"><-</button>`
+    const buttonToBack = `<button onclick="toBack()" class="toBack"> <span class="ep--back"></span> </button>`
 
     const srcImg = json["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_default"]
 
@@ -105,7 +104,7 @@ const showInfoPokemons = async (pokemon) => {
 
     let pokemonPerfil = `
     <section id="pokemonPerfil">
-        <h1>${json.name}</h1>   
+        <h2>${json.name}</h2>   
         <img src="${srcImg}" alt="pokemon" id="imgPerfilPokemon">
         <div id="divType">${divType}</div>
     </section>
@@ -136,11 +135,18 @@ const showInfoPokemons = async (pokemon) => {
         </section>
         `
 
-    const render = `${buttonToBack}
+    const render = `
+    <section id="sectionPokemon">
+    ${buttonToBack}
+    <h1>pokemon characteristics</h1>
         <div id="pokemonData">
-        ${pokemonPerfil}
-        ${infoPokemons}
-        </div>`
+            ${pokemonPerfil}
+            ${infoPokemons}
+        </div>
+    </section>
+    
+    `
+    
 
     sectionPokemons.innerHTML = render
 

@@ -18,12 +18,22 @@ header {
   margin: 64px;
 }
 
+.ep--back {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Cpath fill='%23000' d='M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64'/%3E%3Cpath fill='%23000' d='m237.248 512l265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312z'/%3E%3C/svg%3E");
+  background-color: currentColor;
+  mask-image: var(--svg);
+}
+
 img {
   width: 200px;
 }
 
 h1 {
   margin: 64px;
+  font-size: 2em;
 }
 
 section#pokemon {
@@ -89,7 +99,7 @@ button:hover{
 }
 
 #divType p {
-  background-color: red;
+  background-color: #ffdd00;
   width: 105px;
   font-weight: bold;
   padding: 8px;
@@ -97,15 +107,18 @@ button:hover{
   border-radius: 16px;
   font-size: 0.8em;
 }
-
-div#pokemonData {
+section#sectionPokemon {
   background-color: #f7f7f7;
+  padding: 16px 0px;
   margin: 64px;
+  border-radius: 5px;
+  box-shadow: 3px 2px 10px #3d3d3d85;
+  border: 1px solid purple;
+}
+div#pokemonData {
   padding: 64px;
   display: flex;
   justify-content: space-around;
-  border-radius: 5px;
-  box-shadow: 3px 2px 10px #3d3d3d85;
 }
 
 #info {
