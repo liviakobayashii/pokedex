@@ -9,20 +9,21 @@
 
 body {
   text-align: center;
-  background: linear-gradient(to bottom, #6ab7f5, #fff);
+  /* background: linear-gradient(to bottom, #6ab7f5, #fff); */
+  background-color: #308aea;
+
   min-height: 100vh;
 }
 header {
-  background-color: #ffdd00;
-  margin-bottom: 32px;
+  margin: 64px;
 }
 
 img {
   width: 200px;
 }
 
-h1:first-child {
-  margin-top: 64px;
+h1 {
+  margin: 64px;
 }
 
 section#pokemon {
@@ -37,21 +38,21 @@ section#pokemon {
   margin: 80px;
   padding: 32px;
   border-radius: 5px;
-  box-shadow: 1px 3px 4px rgba(210, 210, 210, 0.599);
+  box-shadow: 1px 3px 4px #3d3d3d85;
 }
 
 #buttons {
   gap: 16px;
 }
 button {
-  background-color: #606060;
+  background-color: #6ab7f5;
   color: #f7f7f7;
   width: 300px;
   margin: 8px;
   padding: 16px;
   border-radius: 5px;
   border: none;
-  box-shadow:0px 8px #383838;
+  box-shadow:0px 8px #014d9f;
 }
 
 button:active {
@@ -104,7 +105,7 @@ div#pokemonData {
   display: flex;
   justify-content: space-around;
   border-radius: 5px;
-  box-shadow: 3px 2px 10px #6ab7f5;
+  box-shadow: 3px 2px 10px #3d3d3d85;
 }
 
 #info {
@@ -156,17 +157,17 @@ div#pokemonData {
 }
 
 .statsName {
-  width: 50px;
+  width: 100px;
   text-align: left;
 }
 
 .statsValue {
-  width: 40px;
+  width: 100px;
   text-align: left;
 }
 
 footer {
-  color: #4a4a4a;
+  color: #f7f7f7;
   padding: 64px;
   font-size: 0.8em;
 }

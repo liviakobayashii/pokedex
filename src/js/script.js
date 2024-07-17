@@ -18,8 +18,10 @@ const init = async () => {
     });
 
     const render = `
-    <h1>Pokémon Types</h1>
-    <div class="divPokemons">${pokemonTypes}</div>
+    <div class="divPokemons">
+        <h1>Pokémon Types</h1>
+        ${pokemonTypes}
+    </div>
     `
 
     sectionPokemons.innerHTML = render
@@ -45,8 +47,10 @@ const showPokemons = async (type) => {
         html += `<button onclick="showInfoPokemons('${pokemon.pokemon.name}')">${pokemon.pokemon.name}</button>`
 
         const render = `
-        <h1>Pókemons of ${lastPokemonTypePicked}<h1>
-        <div class="divPokemons">${html}</div>
+        <div class="divPokemons">
+            <h1>Pókemons of ${lastPokemonTypePicked}</h1>
+            ${html}
+        </div>
         `
 
         sectionPokemons.innerHTML = buttonToBack
@@ -58,7 +62,6 @@ const showPokemons = async (type) => {
 const showInfoPokemons = async (pokemon) => {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
     const json = await response.json()
-    console.log(json)
 
     const buttonToBack = `<button onclick="toBack()" class="toBack"><-</button>`
 
