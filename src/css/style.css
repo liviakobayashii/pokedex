@@ -6,7 +6,8 @@
   --blue: #308aea;
   --darkBlue: #014d9f;
   --light: #f7f7f7;
-  --dark: #3d3d3d85;
+  --dark: #2c2c2c85;
+  --black: #191919;
 }
 
 * {
@@ -18,11 +19,9 @@
 
 body {
   text-align: center;
-  /* background: linear-gradient(to bottom, #6ab7f5, #fff); */
-  background-color: var(--blue);
-
-  min-height: 100vh;
+  background-color: var(--light);
 }
+
 header {
   margin: 64px;
 }
@@ -42,24 +41,23 @@ img {
 
 h1 {
   margin: 64px;
-  font-size: 2em;
+  font-size: 1.5em;
+}
+
+h2 {
+  color: var(--darkBlue);
 }
 
 .divPokemons {
   background-color: var(--light);
-  margin: 80px;
-  padding: 32px;
-  border-radius: 5px;
-  box-shadow: 1px 3px 4px var(--dark);
+  width: auto;
+  padding: 50px;
 }
 
-#buttons {
-  gap: 16px;
-}
 button {
   background-color: var(--lightBlue);
   color: var(--light);
-  width: 300px;
+  width: 150px;
   margin: 8px;
   padding: 16px;
   border-radius: 5px;
@@ -72,45 +70,28 @@ button:active {
   box-shadow: none;
 }
 
-button:hover{
-  cursor: pointer;
-  filter:brightness(0.8);
-  transition: 0.2s;
-  
-}
-
 .toBack {
-  width: 100px;
-  margin-right: 900px;
+  width: 50px;
+  margin-right: 90%;
   text-align: center;
-}
-
-#backToHome {
-  margin: 32px 0px;
-}
-
-#imgPerfilPokemon {
-  filter:drop-shadow(10px 0 30px var(lightBlue))
 }
 
 #sectionPokemon {
   background-color: var(--light);
-  padding: 16px 0px;
-  margin: 64px;
-  border-radius: 5px;
-  box-shadow: 3px 2px 10px var(--dark);
 }
 
-#sectionPokemon #pokemonData {
-  padding: 64px;
-  display: flex;
-  justify-content: space-around;
-}
+/* #sectionPokemon #pokemonData {
+   padding: 64px; 
+} */
 
 #pokemonData #divType {
   margin: 16px 0px;
   display: flex;
   justify-content: space-around;
+}
+
+#imgPerfilPokemon {
+  filter:drop-shadow(10px 0 30px var(--blue))
 }
 
 #divType p {
@@ -158,7 +139,15 @@ button:hover{
   align-items: center;
   gap: 15px;
   width: 100%;
-  padding: 5px 0;
+}
+
+.statsName {
+  width: 100px;
+  text-align: left;
+}
+
+.statsValue {
+  display: none;
 }
 
 #stats .line-bar {
@@ -172,25 +161,66 @@ button:hover{
   background-color: var(--yellow);
 }
 
-
-.statsName {
-  width: 100px;
-  text-align: left;
-}
-
-.statsValue {
-  width: 100px;
-  text-align: left;
-}
-
-footer {
-  color: var(--light);
+footer{
+  color: var(--black);
   padding: 64px;
   font-size: 0.8em;
 }
 
-@media screen and (max-width:900px) {
-  #stats {
-    border: 1px solid red;
+@media screen and (min-width:830px) {
+  body {
+    background-color: var(--blue);
+  }
+  
+  h1 {
+  font-size: 2em;
+  }
+
+  .divPokemons {
+    margin: 90px;
+    padding: 32px;
+    border-radius: 5px;
+    box-shadow: 1px 3px 4px var(--dark);
+  }
+  button {
+    width: 250px;
+  }
+
+  button:hover{
+    cursor: pointer;
+    filter:brightness(0.8);
+    transition: 0.2s;
+    
+  }
+  
+  #sectionPokemon {
+    padding: 16px 0px;
+    margin: 64px;
+    border-radius: 5px;
+    box-shadow: 3px 2px 10px var(--dark);
+  }
+
+  #sectionPokemon #pokemonData {
+    padding: 64px;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  #stats .characteristics {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .statsValue {
+    width: 100px;
+    text-align: left;
+    display: block;
+  }
+
+  footer {
+    color: var(--light);
   }
 }

@@ -19,7 +19,7 @@ const init = async () => {
 
     const render = `
     <div class="divPokemons">
-        <h1>Pokémon Types</h1>
+        <h1>POKÉMON TYPES</h1>
         ${pokemonTypes}
     </div>
     `
@@ -32,7 +32,7 @@ const showPokemons = async (type) => {
     lastPokemonTypePicked = type
 
     const buttonToBack = `
-    <div id="backToHome">
+    <div>
         <button onclick="init()" class="toBack"> <span class="ep--back"></span> </button>
     </div>
     `
@@ -49,7 +49,7 @@ const showPokemons = async (type) => {
         const render = `
         <div class="divPokemons">
             ${buttonToBack}
-            <h1>Pókemons of ${lastPokemonTypePicked}</h1>
+            <h1>POKÉMONS OF ${ lastPokemonTypePicked.toUpperCase()}</h1>
             ${html}
         </div>
         `
@@ -138,7 +138,7 @@ const showInfoPokemons = async (pokemon) => {
     const render = `
     <section id="sectionPokemon">
     ${buttonToBack}
-    <h1>pokemon characteristics</h1>
+    <h1>POKÉMON CHARACTERISTICS</h1>
         <div id="pokemonData">
             ${pokemonPerfil}
             ${infoPokemons}
