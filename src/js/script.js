@@ -1,86 +1,85 @@
-let sectionPokemons = document.querySelector("#pokemons")
+let sectionPokemons = document.querySelector("#pokemons");
 
-var lastPokemonTypePicked = null
+var lastPokemonTypePicked = null;
 
 const init = async () => {
+  const response = await fetch("https://pokeapi.co/api/v2/type");
+  const json = await response.json();
 
-    const response = await fetch("https://pokeapi.co/api/v2/type")
-    const json = await response.json()
+  const types = json.results;
 
-    const types = json.results
+  let pokemonTypes = "";
 
-    let pokemonTypes = ""
-    
-    types.forEach(type => {
-        pokemonTypes += `
+  types.forEach((type) => {
+    pokemonTypes += `
         <button onclick="showPokemons('${type.name}')">${type.name}</button>
-        `
-    });
+        `;
+  });
 
-    const render = `
+  const render = `
     <div class="divPokemons">
         <h1>POKÉMON TYPES</h1>
         ${pokemonTypes}
     </div>
-    `
+    `;
 
-    sectionPokemons.innerHTML = render
-}
+  sectionPokemons.innerHTML = render;
+};
 
 const showPokemons = async (type) => {
+  lastPokemonTypePicked = type;
 
-    lastPokemonTypePicked = type
-
-    const buttonToBack = `
+  const buttonToBack = `
     <div>
         <button onclick="init()" class="toBack"> <span class="ep--back"></span> </button>
     </div>
-    `
+    `;
 
-    const response = await fetch(`https://pokeapi.co/api/v2/type/${type}`)
-    const json = await response.json()
+  const response = await fetch(`https://pokeapi.co/api/v2/type/${type}`);
+  const json = await response.json();
 
-    const pokemons = json.pokemon
+  const pokemons = json.pokemon;
 
-    let html = ""
-    pokemons.forEach(pokemon => {
-        html += `<button onclick="showInfoPokemons('${pokemon.pokemon.name}')">${pokemon.pokemon.name}</button>`
+  let html = "";
+  pokemons.forEach((pokemon) => {
+    html += `<button onclick="showInfoPokemons('${pokemon.pokemon.name}')">${pokemon.pokemon.name}</button>`;
 
-        const render = `
+    const render = `
         <div class="divPokemons">
             ${buttonToBack}
-            <h1>POKÉMONS OF ${ lastPokemonTypePicked.toUpperCase()}</h1>
+            <h1>POKÉMONS OF ${lastPokemonTypePicked.toUpperCase()}</h1>
             ${html}
         </div>
-        `
-        sectionPokemons.innerHTML = render
-    });
-
-}
+        `;
+    sectionPokemons.innerHTML = render;
+  });
+};
 
 const showInfoPokemons = async (pokemon) => {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
-    const json = await response.json()
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+  const json = await response.json();
 
-    const buttonToBack = `<button onclick="toBack()" class="toBack"> <span class="ep--back"></span> </button>`
+  const buttonToBack = `<button onclick="toBack()" class="toBack"> <span class="ep--back"></span> </button>`;
 
-    const srcImg = json["sprites"]["versions"]["generation-v"]["black-white"]["animated"]["front_default"]
+  const srcImg =
+    json["sprites"]["versions"]["generation-v"]["black-white"]["animated"][
+      "front_default"
+    ];
 
-    let divStats = `<hr><h3 id="h3Stats">Stats</h3>`
-    const stats = json.stats
+  let divStats = `<hr><h3 id="h3Stats">Stats</h3>`;
+  const stats = json.stats;
 
-    const statsNames = {
-        hp: 'HP',
-        attack: 'ATK',
-        defense: 'DEF',
-        'special-attack': 'SATK',
-        'special-defense': 'SDEF',
-        speed: 'SPD',
-    }
+  const statsNames = {
+    hp: "HP",
+    attack: "ATK",
+    defense: "DEF",
+    "special-attack": "SATK",
+    "special-defense": "SDEF",
+    speed: "SPD",
+  };
 
-
-    stats.forEach(item => {
-        divStats += `
+  stats.forEach((item) => {
+    divStats += `
         
         <div class="characteristics">
             <p class="statsName">${statsNames[item.stat.name]}</p>
@@ -91,26 +90,26 @@ const showInfoPokemons = async (pokemon) => {
             <div class="bar" style="width: ${item.base_stat}px"></div>
             </div>
             </div>
-            `
-    });
+            `;
+  });
 
-    const type = json.types
+  const type = json.types;
 
-    let divType = ""
+  let divType = "";
 
-    type.forEach(item => {
-        divType += `<p>${item.type.name}</p>`
-    });
+  type.forEach((item) => {
+    divType += `<p>${item.type.name}</p>`;
+  });
 
-    let pokemonPerfil = `
+  let pokemonPerfil = `
     <section id="pokemonPerfil">
         <h2>${json.name}</h2>   
         <img src="${srcImg}" alt="pokemon" id="imgPerfilPokemon">
         <div id="divType">${divType}</div>
     </section>
-        `
+        `;
 
-    let infoPokemons = `
+  let infoPokemons = `
         
         
         <section id="info">
@@ -133,9 +132,9 @@ const showInfoPokemons = async (pokemon) => {
                 </div>
             </section>
         </section>
-        `
+        `;
 
-    const render = `
+  const render = `
     <section id="sectionPokemon">
     ${buttonToBack}
     <h1>POKÉMON CHARACTERISTICS</h1>
@@ -145,19 +144,17 @@ const showInfoPokemons = async (pokemon) => {
         </div>
     </section>
     
-    `
-    
+    `;
 
-    sectionPokemons.innerHTML = render
-
-}
+  sectionPokemons.innerHTML = render;
+};
 
 const toBack = () => {
-    showPokemons(lastPokemonTypePicked)
-}
+  showPokemons(lastPokemonTypePicked);
+};
 
 const transformMeasures = (value) => {
-    return parseFloat(value).toFixed(2).replace(".", ",") || '0,00'
-}
+  return parseFloat(value).toFixed(2).replace(".", ",") || "0,00";
+};
 
-init()
+init();

@@ -23,7 +23,7 @@ body {
 }
 
 header {
-  margin: 64px;
+  padding: 32px;
 }
 main {
   display: flex;
@@ -40,12 +40,13 @@ main {
 }
 
 img {
-  width: 200px;
+  width: 100px;
 }
 
 h1 {
-  margin: 64px;
-  font-size: 1.5em;
+  margin: 32px;
+  font-size: 0.2em;
+  font-size: clamp(2em, 5vw, 3em);
 }
 
 h2 {
@@ -94,7 +95,6 @@ button:active {
 } */
 
 #pokemonData #divType {
-  margin: 16px 0px;
   display: flex;
   justify-content: space-around;
 }
@@ -172,7 +172,7 @@ button:active {
 
 footer {
   color: var(--black);
-  padding: 64px;
+  padding: 32px;
   font-size: 0.8em;
 }
 
@@ -182,12 +182,12 @@ footer {
   }
 
   h1 {
-    font-size: 2em;
+    font-size: 3em;
   }
 
   .divPokemons {
-    margin: 64px;
-    padding: 32px;
+    /* margin: 64px; */
+    padding: 16px;
     border-radius: 5px;
     box-shadow: 1px 3px 4px var(--dark);
   }
@@ -202,14 +202,14 @@ footer {
   }
 
   #sectionPokemon {
-    padding: 16px 0px;
-    margin: 64px;
+    /* padding: 16px 0px;
+    margin: 64px; */
     border-radius: 5px;
     box-shadow: 3px 2px 10px var(--dark);
   }
 
   #sectionPokemon #pokemonData {
-    padding: 64px;
+    /* padding: 64px; */
     display: flex;
     justify-content: space-around;
   }
